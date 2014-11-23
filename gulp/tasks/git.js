@@ -8,18 +8,30 @@ var git = require('gulp-git');
 
 
 gulp.task('git', function(callback){
-	gulp.src('./')
+	/*gulp.src(['./package.json'])
 		.pipe(git.add({args: '-A'}))
 		.pipe(git.commit('testing commit'))
 		.pipe(git.push('origin', 'master', function(err){
 			if (err) throw err;
 			callback();
-		}));
+		}));*/
+	git.add({args: '-A'});
+	git.commit('testing commit msg');
+	
+
+	console.log('git push');
+	git.push('origin', 'master', function(err){
+		if (err) throw err;
+		console.log('done');
+		callback();
+	});
 });
+
+gulp.task('testgit', ['git-add', 'git-commit']);
 
 // Run git add with options
 gulp.task('git-add', function(callback){
-	gulp.src('./')
+	gulp.src('./package.json')
 		.pipe(git.add({args: '-A'}));
     
     callback();

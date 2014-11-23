@@ -7,7 +7,15 @@ var git = require('gulp-git');
 
 
 
-gulp.task('git', ['git-add', 'git-commit', 'git-push']);
+gulp.task('git', function(callback){
+	gulp.src('')
+		.pipe(git.add({args: '-A'}))
+		.pipe(git.commit('testing commit'))
+		.pipe(git.push('origin', 'master', function(err){
+			if (err) throw err;
+			callback();
+		}));
+});
 
 // Run git add with options
 gulp.task('git-add', function(callback){
@@ -21,7 +29,7 @@ gulp.task('git-add', function(callback){
 
 gulp.task('git-commit', function(callback){
 	gulp.src('./')
-		.pipe(git.commit('testing gulp git flow again' ));
+		.pipe(git.commit('git test' ));
 	
 	callback();
 });

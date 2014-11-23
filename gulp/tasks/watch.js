@@ -1,8 +1,17 @@
 /* Notes:
    - gulp/tasks/browserify.js handles js recompiling with watchify
-   - gulp/tasks/browserSync.js watches and reloads compiled files
 */
 
 var gulp  = require('gulp');
 
-gulp.task('watch', ['setWatch', 'browserify']);
+gulp.task('watch', ['setWatch', 'browserify'], function(){
+	watchApp();
+});
+
+function watchApp(){
+	gulp.watch('./build/app.js', function(){
+		if (global.isWatching){
+			require('./concat')['concat-app']();
+		}
+	});
+}

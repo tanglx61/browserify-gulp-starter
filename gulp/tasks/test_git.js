@@ -39,8 +39,10 @@ gulp.task('add', function(done){
 gulp.task('commit', function(done){
   gulp.src('')
     .pipe(git.commit('testing git'), function(){
-      console.log('commit complete');
+
     });
+
+  console.log('commit complete');
 });
 
 /*// Run git commit with options

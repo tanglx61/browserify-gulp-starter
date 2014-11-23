@@ -20,10 +20,9 @@ gulp.task('init', function(){
 gulp.task('try', function(){
   gulp.src('./')
     .pipe(git.add({args: '-A'}))
-    .pipe(git.commit('commiting test'))
-    .on('end', function(){
+    .pipe(git.commit('commiting test'), {}, function(){
       console.log('commit ended');
-    })
+    });
     
    ;
 });

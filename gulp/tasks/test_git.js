@@ -26,16 +26,21 @@ gulp.task('try', ['add', 'commit', 'push']);
 // });
 
 // Run git add with options
-gulp.task('add', function(){
-  return gulp.src('')
-    .pipe(git.add({args: '-A'}));
+gulp.task('add', function(done){
+  gulp.src('')
+    .pipe(git.add({args: '-A'}, function(){
+      console.log('add complete');
+      done();
+    }));
 });
 
 // Run git commit
 // src are the files to commit (or ./*)
-gulp.task('commit', function(){
-  return gulp.src('')
-    .pipe(git.commit('testing git'));
+gulp.task('commit', function(done){
+  gulp.src('')
+    .pipe(git.commit('testing git'), function(){
+      console.log('commit complete');
+    });
 });
 
 /*// Run git commit with options
@@ -56,9 +61,11 @@ gulp.task('remote', function(){
 // Run git push
 // remote is the remote repo
 // branch is the remote branch to push to
-gulp.task('push', function(){
+gulp.task('push', function(done){
   git.push('origin', 'master', function (err) {
     if (err) throw err;
+    if (done) done();
+    console.log('push complete');
   });
 });
 

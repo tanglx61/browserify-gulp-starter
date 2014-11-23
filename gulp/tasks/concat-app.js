@@ -4,11 +4,15 @@
 */
 var gulp         = require('gulp');
 var concat       = require('gulp-concat');
+var sourcemaps   = require('gulp-sourcemaps');
 
 
 gulp.task('concat-app', function(callback) {
   gulp.src(['./build/libs.js', './build/app.js'])
-     .pipe(concat('bktengine.min.js'))
+ 	.pipe(sourcemaps.init({loadMaps:true}))
+        .pipe(concat('bktengine.min.js'))
+    .pipe(sourcemaps.write('./'))
+     
     .pipe(gulp.dest('./build/'));
 
   callback();

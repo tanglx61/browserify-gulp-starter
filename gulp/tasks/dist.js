@@ -11,7 +11,7 @@ var streamqueue = require('streamqueue');
 
 global.gitMessage = argv.m;
 
-gulp.task('dist', ['browserify'], function(){
+/*gulp.task('dist', ['concat-libs', 'browserify'], function(){
 	var libsJS = require('./concat')['concat-libs']();
 
     var appJS = require('./concat')['concat-app']();
@@ -27,6 +27,17 @@ gulp.task('dist', ['browserify'], function(){
     	.on('end', function(){
     		require('./git').git();
     	});
+
+	return require('./concat')['concat-app']();
+	
+});*/
+
+
+gulp.task('dist', ['concat-libs'], function(){
+	require('./copy')['copy-dist']()
+		.on('end', function(){
+			require('./git').git();
+		});
 });
 
 

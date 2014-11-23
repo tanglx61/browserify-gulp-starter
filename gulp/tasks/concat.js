@@ -7,7 +7,7 @@ var sourcemaps   = require('gulp-sourcemaps');
 var concat       = require('gulp-concat');
 
 
-gulp.task('concat-libs', function(){
+gulp.task('concat-libs', ['concat-app'], function(){
   return concatLibs();
 });
 

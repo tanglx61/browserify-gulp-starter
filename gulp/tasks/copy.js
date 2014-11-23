@@ -10,10 +10,18 @@ var files = [
 ];
 
 
-gulp.task('copy-dist', function(callback) {
-  gulp.src(files)     
-    .pipe(gulp.dest('./dist/'));
+gulp.task('copy-dist', function() {
+  return copyDist();
 
-  callback();
 });
+
+function copyDist(){
+	return gulp.src(files)     
+    .pipe(gulp.dest('./dist/'));
+}
+
+
+module.exports = {
+	'copy-dist': copyDist
+};
 

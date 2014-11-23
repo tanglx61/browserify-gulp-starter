@@ -1,6 +1,7 @@
 /* concat app task
    ---------------
-   concat the app.js and libs.js into bktengine.min.js
+   concat the app.js and libs.js into bktengine.min.js, also 
+   concats their sourcemap
 */
 var gulp         = require('gulp');
 var concat       = require('gulp-concat');

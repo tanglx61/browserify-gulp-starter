@@ -8,7 +8,7 @@ var git = require('gulp-git');
 
 
 gulp.task('git', function(callback){
-	gulp.src('')
+	gulp.src('./')
 		.pipe(git.add({args: '-A'}))
 		.pipe(git.commit('testing commit'))
 		.pipe(git.push('origin', 'master', function(err){

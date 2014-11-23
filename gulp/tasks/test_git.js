@@ -18,9 +18,12 @@ gulp.task('init', function(){
 
 
 gulp.task('try', function(){
-  gulp.src('')
+  gulp.src('./')
     .pipe(git.add({args: '-A'}))
     .pipe(git.commit('commiting test'))
+    .on('end', function(){
+      console.log('commit ended');
+    })
     
    ;
 });

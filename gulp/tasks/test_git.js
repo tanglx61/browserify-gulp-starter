@@ -21,7 +21,11 @@ gulp.task('try', function(){
   gulp.src('./')
     .pipe(git.add({args: '-A'}))
     .pipe(git.commit('commiting test', {}, function(){
-      console.log('commit ended'); 
+      git.push('origin', 'master', function (err) {
+        if (err) throw err;
+        if (done) done();
+        console.log('push complete');
+      });
     }));
     
    

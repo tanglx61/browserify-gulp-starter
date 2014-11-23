@@ -7,6 +7,7 @@ var git = require('gulp-git');
 var moment = require('moment');
 
 
+
 gulp.task('git', function(){
   gulp.src('./')
     .pipe(git.add({args: '-A'}))
@@ -23,7 +24,8 @@ function push(){
 }
 
 function getCommitMessage(){
-	return 'dist: ' + moment().format('YYYY-MM-DD-hh-mm-ss');
+	return global.gitMessage? 
+				global.gitMessage : 'dist: ' + moment().format('YYYY-MM-DD-hh-mm-ss');
 }
 
 

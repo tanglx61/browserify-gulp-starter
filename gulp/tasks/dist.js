@@ -12,10 +12,9 @@ var streamqueue = require('streamqueue');
 global.gitMessage = argv.m;
 
 gulp.task('dist', ['browserify'], function(){
-	var libsJS = gulp.src('./libs/*.js')
-    	.pipe(concat('libs.js'));
+	var libsJS = require('./concat')['concat-libs']();
 
-    var appJS = gulp.src('./build/app.js');
+    var appJS = require('./concat')['concat-app']();
     				
     var stream = new streamqueue({objectMode: true});
 

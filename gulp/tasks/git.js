@@ -33,7 +33,7 @@ gulp.task('testgit', ['git-add', 'git-commit']);
 gulp.task('git-add', function(callback){
 	gulp.src('./package.json')
 		.pipe(git.add({args: '-A'}));
-    
+    console.log('git added');
     callback();
 });
 
@@ -42,7 +42,7 @@ gulp.task('git-add', function(callback){
 gulp.task('git-commit', function(callback){
 	gulp.src('./')
 		.pipe(git.commit('git test' ));
-	
+	console.log('git commited');
 	callback();
 });
 

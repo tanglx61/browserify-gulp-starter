@@ -23,7 +23,6 @@ gulp.task('try', function(){
     .pipe(git.commit('commiting test', {}, function(){
       git.push('origin', 'master', function (err) {
         if (err) throw err;
-        if (done) done();
         console.log('push complete');
       });
     }));

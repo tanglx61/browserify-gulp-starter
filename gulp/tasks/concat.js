@@ -7,14 +7,18 @@ var sourcemaps   = require('gulp-sourcemaps');
 var concat       = require('gulp-concat');
 
 
-gulp.task('concat-libs', function() {
+gulp.task('concat-libs', function(){
+  return concatLibs();
+});
+
+
+function concatLibs(){
   return gulp.src('./libs/*.js')
     .pipe(sourcemaps.init())
         .pipe(concat('libs.js'))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./build/'));
-
-});
+}
 
 
 /* concat app task
@@ -26,13 +30,24 @@ var concat       = require('gulp-concat');
 var sourcemaps   = require('gulp-sourcemaps');
 
 
-gulp.task('concat-app', ['browserify'], function() {
+gulp.task('concat-app', ['browserify'], function(){
+  return concatApp();
+});
+
+function concatApp(){
+
   return gulp.src(['./build/libs.js', './build/app.js'])
- 	.pipe(sourcemaps.init({loadMaps:true}))
+  .pipe(sourcemaps.init({loadMaps:true}))
         .pipe(concat('bktengine.min.js'))
     .pipe(sourcemaps.write('./'))
      
     .pipe(gulp.dest('./build/'));
 
-});
+}
+
+
+module.exports = {
+  'concat-libs': concatLibs,
+  'concat-app': concatApp
+};
 

@@ -16,6 +16,8 @@ gulp.task('init', function(){
   });
 });
 
+gulp.task('try', ['add', 'commit', 'push']);
+
 // // Run git add
 // // src is the file(s) to add (or ./*)
 // gulp.task('add', function(){

@@ -20,10 +20,7 @@ gulp.task('try', function(){
   gulp.src('')
     .pipe(git.add({args: '-A'}))
     .pipe(git.commit('commiting test'))
-    .pipe(git.push('origin', 'master', function (err) {
-      if (err) throw err;
-      console.log('process complete successfully');
-    }));
+   ;
 });
 
 

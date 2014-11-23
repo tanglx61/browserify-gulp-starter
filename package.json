@@ -22,6 +22,10 @@
   "author": "Lixuan Tang",
   "license": "ISC",
   "dependencies": {},
+  "bkt":{
+  },
+
+  
   "devDependencies": {
     "browserify": "^6.3.2",
     "browserify-shim": "^3.8.0",
